@@ -2,7 +2,10 @@
 
 /*
  * if first argument is passed, use that as a filename
- * otherwise, loop through all pngs in current directory
+ * otherwise, loop through all pngs in current directory.
+ * Works with any size sprite, but was created for a 16x16 sprite frame.
+ * Made for an LED matrix built from an LED strip that threads left-to-right 
+ * on odd lines and left-to-right on even lines.
  */
 
 if (!empty($argv[1])) {
@@ -41,7 +44,7 @@ function processImage($filename) {
 }
 
 function printColor($rgb) {
-    $r = dechex(($rgb >> 16) & 0xFF);
+	$r = dechex(($rgb >> 16) & 0xFF);
 	$g = dechex(($rgb >> 8) & 0xFF);
 	$b = dechex($rgb & 0xFF);
 	print '0x' . str_pad($r, 2, '0', STR_PAD_LEFT) . str_pad($g, 2, '0', STR_PAD_LEFT) . str_pad($b, 2, '0', STR_PAD_LEFT) . ", ";
